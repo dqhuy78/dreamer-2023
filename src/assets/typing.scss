@@ -1,0 +1,6 @@
+@import 'typed';
+
+.game-welcome-msg {
+  color: theme('colors.slate.50');
+  @include typed('Hello Mrs.Dream,\A Do you want to join your Birthday GameShow?', null, (iterations: 0, caret-width: 6px));
+}
