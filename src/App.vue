@@ -11,32 +11,32 @@ import Final from './components/Final.vue';
 const questions = [
   {
     content: 'Con mai lo choi nhảy ở giữa màu cam là ai?',
-    imageSrc: './assets/q1.jpg',
+    imageSrc: 'https://images.viblo.asia/612e9ecf-c7b5-4e7a-b8bf-ff983f9308a4.jpg',
     answers: ['Ước Mơ', 'Lê Mến', 'Quỳnh Mai'],
     correctAnswerIndex: 2,
   },
   {
     content: 'Vào sinh nhật của Lê Mến, chúng ta đã chiêu đãi Lê Mến món ăn nào?',
-    imageSrc: './assets/q2.jpg',
+    imageSrc: 'https://images.viblo.asia/3f8a7a86-8ec8-499a-bf8b-32568237d42a.jpg',
     answers: ['Canh trứng', 'Lẩu nấm', 'Buffet'],
     correctAnswerIndex: 2,
   },
   {
     content: 'Trong năm 2023, Hải Nam đã chuyển nhà bao nhiều lần?',
-    imageSrc: './assets/q3.jpg',
+    imageSrc: 'https://images.viblo.asia/a953128f-374e-47a6-93d9-36530ba22b3d.jpg',
     answers: ['1 lần', '2 lần', '3 lần'],
     correctAnswerIndex: 1,
   },
   {
     content: 'Kênh tiktok của Idol Nghiêm Nhung tên là gì?',
-    imageSrc: './assets/q4.png',
+    imageSrc: 'https://images.viblo.asia/f9f5e004-44a1-418e-92a4-a858e7d92d60.png',
     answers: ['Nghiemnhung912', 'Nghiemnhung911', 'Nghiemnhung811'],
     reduceAnswerSize: true,
     correctAnswerIndex: 0,
   },
   {
     content: 'Vân Hạnh đã đi bao nhiêu nước?',
-    imageSrc: './assets/q5.jpg',
+    imageSrc: 'https://images.viblo.asia/c3380add-7707-46d0-ac75-d51d46f63680.jpg',
     answers: ['5', '8', '10'],
     correctAnswerIndex: [0, 1, 2],
   }
