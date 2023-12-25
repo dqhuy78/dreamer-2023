@@ -1,36 +1,44 @@
 <script setup>
+import { nextTick, ref } from 'vue';
+
 import Welcome from './components/Welcome.vue';
 import Question from './components/Question.vue';
 import Challenge from './components/Challenge.vue';
 import Prize from './components/Prize.vue';
-import { ref } from 'vue';
+import SelectType from './components/SelectType.vue';
+import Final from './components/Final.vue';
 
 const questions = [
   {
     content: 'Con mai lo choi nhảy ở giữa màu cam là ai?',
-    imageSrc: 'https://learn.viblo.asia/uploads/6/4/643ca156-1c12-4291-89fa-8daf5a9d52ac.jpg',
+    imageSrc: './src/assets/q1.jpg',
     answers: ['Ước Mơ', 'Lê Mến', 'Quỳnh Mai'],
+    correctAnswerIndex: 2,
   },
   {
     content: 'Vào sinh nhật của Lê Mến, chúng ta đã chiêu đãi Lê Mến món ăn nào?',
-    imageSrc: 'https://learn.viblo.asia/uploads/6/4/643ca156-1c12-4291-89fa-8daf5a9d52ac.jpg',
+    imageSrc: './src/assets/q2.jpg',
     answers: ['Canh trứng', 'Lẩu nấm', 'Buffet'],
+    correctAnswerIndex: 2,
   },
   {
     content: 'Trong năm 2023, Hải Nam đã chuyển nhà bao nhiều lần?',
-    imageSrc: 'https://learn.viblo.asia/uploads/6/4/643ca156-1c12-4291-89fa-8daf5a9d52ac.jpg',
+    imageSrc: './src/assets/q3.jpg',
     answers: ['1 lần', '2 lần', '3 lần'],
+    correctAnswerIndex: 1,
   },
   {
     content: 'Kênh tiktok của Idol Nghiêm Nhung tên là gì?',
-    imageSrc: 'https://learn.viblo.asia/uploads/6/4/643ca156-1c12-4291-89fa-8daf5a9d52ac.jpg',
+    imageSrc: './src/assets/q4.png',
     answers: ['Nghiemnhung912', 'Nghiemnhung911', 'Nghiemnhung811'],
     reduceAnswerSize: true,
+    correctAnswerIndex: 0,
   },
   {
     content: 'Vân Hạnh đã đi bao nhiêu nước?',
-    imageSrc: 'https://learn.viblo.asia/uploads/6/4/643ca156-1c12-4291-89fa-8daf5a9d52ac.jpg',
+    imageSrc: './src/assets/q5.jpg',
     answers: ['5', '8', '10'],
+    correctAnswerIndex: [0, 1, 2],
   }
 ];
 
@@ -44,13 +52,13 @@ const challenges = [
 
 const prizes = [
   {
-    content: 'Hãy mở ngăn kéo bàn thứ 2 và khám phá mòn quà đầu tiên nhé.',
+    content: 'Hãy mở ngăn kéo bàn thứ 2 và khám phá món quà đầu tiên nhé.',
   },
   {
-    content: 'Một bữa trưa với chúng tôi vào thứ 4 (27/12). Thời gian sẽ gửi đến bạn sớm khi trò chơi kết thúc.',
+    content: 'Một bữa trưa với chúng tôi vào trưa thứ 3 (26/12).',
   },
   {
-    content: 'Bạn sẽ được gặp chồng/vờ và con chúng tôi. Chúc cho buổi gặp mặt này sẽ tiếp thêm động lực sản xuất baby cho bạn.',
+    content: 'Bạn sẽ được gặp chồng/vợ và con chúng tôi. Chúc cho buổi gặp mặt này sẽ tiếp thêm động lực sản xuất baby cho bạn.',
     reduceSize: true,
   },
   {
@@ -63,33 +71,66 @@ const prizes = [
 ];
 
 const phase = ref('welcome');
-const roundNumber = ref(0);
-const roundContent = ref('');
+const roundNumber = ref(-1);
+const prizeTitle = ref();
+
+const onChangePhase = (newPhase, newRoundNumber = undefined) => {
+  if (newRoundNumber !== undefined) {
+    roundNumber.value = newRoundNumber;
+  }
+  nextTick(() => {
+    phase.value = newPhase;
+  });
+}
+
+const onChooseAnswer = (isCorrect) => {
+  setTimeout(() => {
+    if (isCorrect) {
+      onChangePhase('prize');
+    } else {
+      onChangePhase('prize');
+      prizeTitle.value = 'Phần Quà An Ủi'
+
+    }
+  }, 2000);
+}
+
+const onAcceptChallenge = () => {
+  setTimeout(() => {
+    onChangePhase('prize');
+  }, 200);
+}
 </script>
 
 <template>
   <div class="game-bgr">
-    <Welcome />
-  </div>
-  <hr class="my-4 bg-amber-500" />
-  <div class="game-bgr" v-for="(question, index) in questions">
+
+    <Welcome v-if="phase === 'welcome'" @onChangePhase="onChangePhase('select')"/>
+    <SelectType v-else-if="phase === 'select'" :currentRoundNumber="roundNumber" @onChangePhase="onChangePhase" />
     <Question
-      :roundNumber="index"
-      :question="question.content"
-      :imageSrc="question.imageSrc"
-      :answers="question.answers"
-      :reduceAnswerSize="question.reduceAnswerSize" />
-  </div>
-  <hr class="my-4 bg-amber-500" />
-  <div class="game-bgr" v-for="(challenge, index) in challenges">
+      v-else-if="phase === 'question'"
+      :roundNumber="roundNumber"
+      :question="questions[roundNumber].content"
+      :imageSrc="questions[roundNumber].imageSrc"
+      :answers="questions[roundNumber].answers"
+      :reduceAnswerSize="questions[roundNumber].reduceAnswerSize"
+      :correctAnswerIndex="questions[roundNumber].correctAnswerIndex"
+      @onChooseAnswer="onChooseAnswer" />
     <Challenge
-      :challengeNumber="index + 1"
-      :challenge="challenge" />
-  </div>
-  <hr class="my-4 bg-amber-500" />
-  <div class="game-bgr relative" v-for="prize in prizes">
-    <Prize :prizeName="prize.content" :reduceSize="prize.reduceSize" />
+      v-else-if="phase === 'challenge'"
+      :challengeNumber="roundNumber"
+      @onAcceptChallenge="onAcceptChallenge"
+      :challenge="challenges[roundNumber]" />
+    <Prize v-else-if="phase === 'prize'"
+      :title="prizeTitle"
+      :prizeName="prizes[roundNumber].content"
+      :reduceSize="prizes[roundNumber].reduceSize"
+      :currentRoundNumber="roundNumber"
+      @onChangePhase="() => {
+        if (roundNumber === 4) return onChangePhase('final');
+        onChangePhase('select');
+        prizeTitle = undefined;
+      }" />
+      <Final v-else-if="phase === 'final'"/>
   </div>
 </template>
-
-

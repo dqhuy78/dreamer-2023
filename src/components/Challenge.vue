@@ -2,12 +2,14 @@
 defineProps({
   challengeNumber: Number,
   challenge: String,
-})
+});
+
+const emit = defineEmits(['onAcceptChallenge'])
 </script>
 
 <template>
   <h2 id="game-round-ttl" class="text-7xl font-black mb-6 text-amber-500 -mt-10">
-      CHALLENGE {{ challengeNumber }}
+      CHALLENGE {{ challengeNumber + 1}}
     </h2>
     <div id="game-card" class="relative h-[350px] w-[770px] rounded-3xl px-10 pt-3">
       <div class="z-1 absolute left-0 top-0 h-[350px] w-[770px] -rotate-3 rounded-3xl bg-red-500 shadow-bgr"></div>
@@ -20,7 +22,9 @@ defineProps({
         </div>
         <div id="game-answer" class="flex items-center justify-around">
           <div
-            class="flex w-[250px] cursor-pointer select-none items-center rounded-3xl border-4 p-7 text-2xl transition-all justify-center font-bold text-slate-900 border-green-700 hover:bg-green-500 hover:text-slate-50">
+            class="flex w-[250px] cursor-pointer select-none items-center rounded-3xl border-4 p-7 text-2xl transition-all justify-center font-bold text-slate-900 border-green-700 hover:bg-green-500 hover:text-slate-50"
+            @click="emit('onAcceptChallenge')"
+          >
             CHƠI LUÔN
           </div>
           <div class="group relative cursor-pointer py-2">

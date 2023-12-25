@@ -1,14 +1,41 @@
 <script setup>
-defineProps({
+import { ref } from 'vue';
+
+const props = defineProps({
   roundNumber: Number,
   question: String,
   imageSrc: String,
   answers: Array,
-  correctIndex: Number,
-  reduceAnswerSize: Boolean
-})
+  reduceAnswerSize: Boolean,
+  correctAnswerIndex: Number || Array,
+});
+
+const emit = defineEmits(['onChooseAnswer']);
 
 const startLetter = ['A', 'B', 'C'];
+const answerClass = ref(['', '', '']);
+const disableClick = ref(false);
+const onPickAnswer = (index) => {
+  if (disableClick.value) return;
+  if (typeof props.correctAnswerIndex === 'number') {
+    if (index === props.correctAnswerIndex) {
+      answerClass.value[index] = 'game-correct-answer';
+      emit('onChooseAnswer', true);
+    } else {
+      answerClass.value[index] = 'game-wrong-answer';
+      emit('onChooseAnswer', false);
+    }
+  } else {
+    if (props.correctAnswerIndex.includes(index)) {
+      answerClass.value[index] = 'game-correct-answer';
+      emit('onChooseAnswer', true);
+    } else {
+      answerClass.value[index] = 'game-wrong-answer';
+      emit('onChooseAnswer', false);
+    }
+  }
+  disableClick.value = true;
+}
 </script>
 
 <template>
@@ -24,13 +51,15 @@ const startLetter = ['A', 'B', 'C'];
           {{ question }}
         </h3>
         <div class="flex w-full select-none items-center justify-center">
-          <img :src="imageSrc" class="h-auto w-[300px] rounded-xl" />
+          <img :src="imageSrc" class="h-auto w-[300px] rounded-xl hover:scale-[300%] transition-all" />
         </div>
       </div>
       <div id="game-answer" class="flex items-center justify-between">
         <div v-for="(answer, index) in answers"
           class="flex w-[250px] cursor-pointer select-none items-center rounded-3xl border-4 border-amber-500 p-7 text-slate-900 transition-all hover:bg-amber-300"
-            :class="`${reduceAnswerSize ? 'text-xl' : 'text-2xl'}`"
+            :class="`${reduceAnswerSize ? 'text-xl' : 'text-2xl'} ${answerClass[index]}`
+            "
+            @click="onPickAnswer(index)"
           >
           <p class="mr-3 flex items-center justify-center font-bold">{{ startLetter[index] }}.</p>
           <p class="font-bold">{{ answer }}</p>
@@ -42,7 +71,7 @@ const startLetter = ['A', 'B', 'C'];
 
 <style scoped>
 .game-correct-answer {
-  @apply border-green-700 bg-green-500 text-slate-50;
+  @apply border-green-700 bg-green-500 text-slate-50 animate-pulse;
 
   &:hover {
     @apply !bg-green-500;

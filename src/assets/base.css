@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 body {
-  overflow-x: hidden
+  overflow: hidden
 }
 
 .game-bgr {
   @apply flex h-screen w-screen flex-col items-center justify-center overflow-hidden;
-  background-image: url("https://learn.viblo.asia/uploads/9/3/938d65d5-e3ad-4b67-9c3e-de52457aa791.png");
+  background-image: url("./bgr.png");
   background-size: cover;
   user-select: none;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 #game-round-ttl {
@@ -68,8 +68,8 @@ body {
 }
 
 .appear-and-shake {
-  -webkit-animation: appear 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 5s both, shake-horizontal 3.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) 1s infinite both;
-          animation: appear 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 5s both, shake-horizontal 3.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) 1s infinite both;
+  -webkit-animation: appear 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 2.5s both, shake-horizontal 3.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) 1s infinite both;
+          animation: appear 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 2.5s both, shake-horizontal 3.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) 1s infinite both;
 }
 
 @keyframes appear {

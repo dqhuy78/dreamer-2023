@@ -1,3 +1,7 @@
+<script setup>
+const emit = defineEmits(['onChangePhase']);
+</script>
+
 <template>
   <div>
     <h2 class="game-welcome-msg text-5xl mb-4 font-semibold text-slate-50 w-[1100px] h-[120px]">
@@ -5,18 +9,22 @@
   </div>
   <div class="w-[500px] flex items-center justify-between">
     <button
-      class="roll-in-left text-4xl font-bold w-[200px] border-4 rounded-3xl p-7 border-green-700 bg-green-500 text-slate-50">
+      class="roll-in-left text-4xl font-bold w-[200px] border-4 rounded-3xl p-7 border-green-700 bg-green-500 text-slate-50"
+      @click="emit('onChangePhase')"
+    >
       YES
     </button>
     <button
-      class="roll-in-right text-4xl font-bold w-[200px] border-4 rounded-3xl p-7 border-red-700 bg-red-500 text-slate-50 group-hover:block group">
+      class="roll-in-right text-4xl font-bold w-[200px] border-4 rounded-3xl p-7 border-red-700 bg-red-500 text-slate-50 group-hover:block group"
+      @click="emit('onChangePhase')"
+    >
       <span class="hidden group-hover:block">YES</span>
       <span class="group-hover:hidden">NO</span>
     </button>
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '@/assets/typed.scss';
 @import '@/assets/typing.scss';
 
