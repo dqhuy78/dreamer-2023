@@ -11,32 +11,32 @@ import Final from './components/Final.vue';
 const questions = [
   {
     content: 'Con mai lo choi nhảy ở giữa màu cam là ai?',
-    imageSrc: './src/assets/q1.jpg',
+    imageSrc: './assets/q1.jpg',
     answers: ['Ước Mơ', 'Lê Mến', 'Quỳnh Mai'],
     correctAnswerIndex: 2,
   },
   {
     content: 'Vào sinh nhật của Lê Mến, chúng ta đã chiêu đãi Lê Mến món ăn nào?',
-    imageSrc: './src/assets/q2.jpg',
+    imageSrc: './assets/q2.jpg',
     answers: ['Canh trứng', 'Lẩu nấm', 'Buffet'],
     correctAnswerIndex: 2,
   },
   {
     content: 'Trong năm 2023, Hải Nam đã chuyển nhà bao nhiều lần?',
-    imageSrc: './src/assets/q3.jpg',
+    imageSrc: './assets/q3.jpg',
     answers: ['1 lần', '2 lần', '3 lần'],
     correctAnswerIndex: 1,
   },
   {
     content: 'Kênh tiktok của Idol Nghiêm Nhung tên là gì?',
-    imageSrc: './src/assets/q4.png',
+    imageSrc: './assets/q4.png',
     answers: ['Nghiemnhung912', 'Nghiemnhung911', 'Nghiemnhung811'],
     reduceAnswerSize: true,
     correctAnswerIndex: 0,
   },
   {
     content: 'Vân Hạnh đã đi bao nhiêu nước?',
-    imageSrc: './src/assets/q5.jpg',
+    imageSrc: './assets/q5.jpg',
     answers: ['5', '8', '10'],
     correctAnswerIndex: [0, 1, 2],
   }
