@@ -2,5 +2,5 @@
 
 .game-welcome-msg {
   color: theme('colors.slate.50');
-  @include typed('Xin chào Ms. Apricot,,\A Bạn đã sẵn sàng tham gia Gameshow sinh nhật của mình chưa?', null, (iterations: 0, caret-width: 6px));
+  @include typed('Xin chào Ms. Apricot,\A Bạn đã sẵn sàng tham gia GameShow sinh nhật của mình chưa?', null, (iterations: 0, caret-width: 6px));
 }
