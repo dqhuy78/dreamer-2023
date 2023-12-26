@@ -29,8 +29,8 @@ const emit = defineEmits(['onChangePhase']);
 }
 
 .slide-in-tl {
-  -webkit-animation: slide-in-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s both;
-          animation: slide-in-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s both;
+  -webkit-animation: slide-in-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s both;
+          animation: slide-in-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s both;
 }
 @keyframes slide-in-tl {
   0% {
@@ -46,8 +46,8 @@ const emit = defineEmits(['onChangePhase']);
 }
 
 .slide-in-br {
-  -webkit-animation: slide-in-br 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s both;
-          animation: slide-in-br 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s both;
+  -webkit-animation: slide-in-br 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.7s both;
+          animation: slide-in-br 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.6s both;
 }
 @keyframes slide-in-br {
   0% {

@@ -51,7 +51,7 @@ const onPickAnswer = (index) => {
           {{ question }}
         </h3>
         <div class="flex w-full select-none items-center justify-center">
-          <img :src="imageSrc" class="h-auto w-[300px] rounded-xl hover:scale-[300%] transition-all" />
+          <img :src="imageSrc" class="h-auto w-[300px] rounded-xl hover:scale-[200%] transition-all" />
         </div>
       </div>
       <div id="game-answer" class="flex items-center justify-between">

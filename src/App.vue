@@ -10,7 +10,7 @@ import Final from './components/Final.vue';
 
 const questions = [
   {
-    content: 'Con mai lo choi nhảy ở giữa màu cam là ai?',
+    content: 'Con ma lo choi nhảy ở giữa màu cam là ai?',
     imageSrc: 'https://images.viblo.asia/612e9ecf-c7b5-4e7a-b8bf-ff983f9308a4.jpg',
     answers: ['Ước Mơ', 'Lê Mến', 'Quỳnh Mai'],
     correctAnswerIndex: 2,
@@ -70,7 +70,7 @@ const prizes = [
   }
 ];
 
-const phase = ref('welcome');
+const phase = ref('final');
 const roundNumber = ref(-1);
 const prizeTitle = ref();
 

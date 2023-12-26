@@ -29,8 +29,8 @@ const emit = defineEmits(['onChangePhase']);
 @import '@/assets/typing.scss';
 
 .roll-in-left {
-  -webkit-animation: roll-in-left 0.6s ease-out 7s both;
-  animation: roll-in-left 0.6s ease-out 7s both;
+  -webkit-animation: roll-in-left 0.6s ease-out 7.5s both;
+  animation: roll-in-left 0.6s ease-out 7.5s both;
 }
 
 @-webkit-keyframes roll-in-left {
@@ -62,8 +62,8 @@ const emit = defineEmits(['onChangePhase']);
 }
 
 .roll-in-right {
-  -webkit-animation: roll-in-right 0.6s ease-out 7s both;
-  animation: roll-in-right 0.6s ease-out 7s both;
+  -webkit-animation: roll-in-right 0.6s ease-out 7.5s both;
+  animation: roll-in-right 0.6s ease-out 7.5s both;
 }
 
 @-webkit-keyframes roll-in-right {
