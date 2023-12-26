@@ -4,7 +4,7 @@ const emit = defineEmits(['onChangePhase']);
 
 <template>
   <div>
-    <h2 class="game-welcome-msg text-5xl mb-4 font-semibold text-slate-50 w-[1100px] h-[120px]">
+    <h2 class="game-welcome-msg mb-4 font-semibold text-slate-50 w-[1200px] h-[120px] text-[40px]" style="line-height: 1.4">
     </h2>
   </div>
   <div class="w-[500px] flex items-center justify-between">
