@@ -70,7 +70,7 @@ const prizes = [
   }
 ];
 
-const phase = ref('final');
+const phase = ref('welcome');
 const roundNumber = ref(-1);
 const prizeTitle = ref();
 
